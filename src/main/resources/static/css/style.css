@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: rgb(44, 44, 44);
+    color:white;
+}
+
+form {
+    width: 35%;
+    margin: auto;
+    margin-top: 11%;
+}
+
+#save-btn {
+    cursor: pointer;
+    background: rgb(9, 164, 9);
+    font-size: 20px;
+    text-transform: uppercase;
+    color: white;
+    font-weight: 900;
+}
+
+#save-btn:hover {
+    background: green;
+}
+
+input {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
