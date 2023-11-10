@@ -2,22 +2,52 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"  >
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
   <title>Title</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<h1>Simple HTML Form</h1>
-<form action="/login">
+<!-- overlay when login is active -->
+<div class="overlay"></div>
+<div class="left">
+  <img src="img/x-img.jpg" alt="X-image">
+</div>
+<div class="right">
+  <h1>Happening now</h1>
+  <h4>Join today.</h4>
+  <form action="/user/signup"  autocomplete="off">
+    <input type="text" name="name" id="name" placeholder="name">
+    <input type="text" name="username" id="username" placeholder="username">
+    <input type="text" name="email" id="email" placeholder="email">
+    <input type="password" name="password" id="password" placeholder="password">
+    <input class="btn" id="create-acc" type="submit" value="Create Account">
+    <div class="or">
+      <did class="line"></did>
+      <p>OR</p>
+      <did class="line"></did>
+    </div>
+    <input class="btn" id="signin" type="button" value="Sign In Account">
+  </form>
+</div>
+<div class="login">
+  <img src="img/x-img.jpg" alt="X-image">
+  <h4>Sign in to X</h4>
+  <form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="username">
+    <input type="password" name="password" placeholder="password">
+    <input class="btn" id="login" type="submit" value="Login">
+  </form>
+  <button id="close-btn">X</button>
+</div>
+<script th:if="${param.error}">
+  alert('Invalid username or password.');
+</script>
+<div class="footer">
+  <a href="#">About</a>
+  <a href="#">Terms & Services</a>
+  <a href="#">Contact</a>
+</div>
 
-  <label for="name">Username:</label>
-  <input type="text" id="name" name="name" required>
-  <br><br>
-
-  <label for="password">Password:</label>
-  <input type="text" id="password" name="password" required>
-  <br><br>
-
-  <input id="save-btn" type="submit" value="Submit">
-</form>
+<script src="js/script.js"></script>
 </body>
 </html>

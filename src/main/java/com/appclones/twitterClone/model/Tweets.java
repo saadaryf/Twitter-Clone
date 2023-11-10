@@ -16,7 +16,7 @@ public class Tweets {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "content")
+    @Column(name = "content", length = 5000)
     private String content;
 
     @Column(name = "time")

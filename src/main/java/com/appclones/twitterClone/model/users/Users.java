@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -15,6 +16,9 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "username" ,unique = true)
     private String username;
@@ -53,4 +57,10 @@ public class Users {
     /*user and searchHistory, one to many*/
     @OneToMany(mappedBy = "user")
     private List<SearchHistory> searchHistories;
+
+    /*creating roles table*/
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private Set<String> roles;
 }

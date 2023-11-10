@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <link rel="stylesheet" href="css/home.css">
+    <title>Home</title>
+</head>
+<body>
+<div class="main">
+    <div class="left">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#"><img src="img/x-img.jpg" alt=""></a>
+                    </li>
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Notifications</a>
+                    </li>
+                    <li>
+                        <a href="#">Messages</a>
+                    </li>
+                    <li>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <form id="logoutForm" th:action="@{/logout}" method="post">
+                            <a href="#" onclick="document.getElementById('logoutForm').submit();">Logout</a>
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="profile">
+            <div class="name">
+                <b>Saad Dhillon</b>
+                <p>SaadDhillon7</p>
+            </div>
+        </div>
+    </div>
+    <div class="middle">
+        <form th:action="@{/tweet/save}" method="post">
+            <div class="create-tweet">
+                <textarea id="tweet-content" name="content" placeholder="What is happening?!"></textarea>
+                <div class="line"></div>
+                <button type="submit" id="post-btn">POST</button>
+                <div class="line"></div>
+            </div>
+        </form>
+        <div th:each="tweet : ${tweets}" class="new-tweet">
+            <h5 th:text="${tweet.name}">John Doe</h5>
+            <p th:text="${#dates.format(tweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
+            <div class="content">
+                <p th:text="${tweet.content}" th:id="${'tweet-content-' + tweet.id}">This is a tweet</p>
+            </div>
+            <div class="tweet-btns">
+                <!-- Your initial HTML -->
+                <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}" th:fragment="likeFragment">
+                    <span th:text="${tweet.like_count}">0</span>-Likes
+                </a>
+                <a href="#">Reply</a>
+                <a href="#">Message</a>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="trendings">
+            <ul>
+                <li>
+                    <a href="#">#trending1</a>
+                </li>
+                <li>
+                    <a href="#">#trending2</a>
+                </li>
+                <li>
+                    <a href="#">#trending3</a>
+                </li>
+                <li>
+                    <a href="#">#trending4</a>
+                </li>
+                <li>
+                    <a href="#">#trending5</a>
+                </li>
+                <li>
+                    <a href="#">#trending5</a>
+                </li>
+                <li>
+                    <a href="#">#trending5</a>
+                </li>
+                <li>
+                    <a href="#">#trending5</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="js/home.js"></script>
+</body>
+</html>
+

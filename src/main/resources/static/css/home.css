@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text&family=Inconsolata:wght@300&family=Pacifico&family=Roboto:wght@100;300&display=swap');
+
+/* font-family: 'Crimson Text', serif;
+font-family: 'Inconsolata', monospace;
+font-family: 'Pacifico', cursive;
+font-family: 'Roboto', sans-serif; */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.main{
+    display: flex;
+    justify-content: right;
+}
+.right{
+    position: fixed;
+    right: 0px;
+    overflow: hidden;
+}
+.middle{
+    width: 47.5vw;
+    height: 100vh;
+    margin: auto;
+}
+.create-tweet{
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+.create-tweet textarea {
+    padding: 20px;
+    font-size: 20px;
+    background: rgb(15, 15, 15);
+    border: 0;
+    outline: none;
+    color: white;
+    resize: none;
+    overflow-y: auto;
+}
+
+#post-btn{
+    position: relative;
+    padding: 15px 20px;
+    border-radius: 30px;
+    margin-left: auto;
+    margin-right: 35px;
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+    background: #2f0eeb;
+    cursor: pointer;
+}
+.line {
+    height: 1px;
+    border-bottom: 1px solid gray;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+header img{
+    width: 65px;
+}
+header ul{
+    list-style: none;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10%;
+    margin-top: 10%;
+    line-height: 50px;
+    font-weight: 900;
+
+}
+header ul li{
+    margin-top: 20px;
+}
+header a{
+    position: relative;
+    text-decoration: none;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 30px;
+    &:hover{
+        background: #2e2d2e79;
+    }
+}
+header button{
+    position: relative;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+.left {
+    position: fixed;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.profile{
+    height: 7vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.left,.right{
+    width: 25vw;
+    height: 100vh;
+}
+.new-tweet{
+    width: 100%;
+    margin: auto;
+    height: auto;
+    padding: 40px 40px 5px 40px;
+    border-bottom: 1px solid gray;
+    box-sizing: border-box;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+.new-tweet p{
+    font-size: 12px;
+    color: gray;
+}
+.new-tweet .content{
+    height: auto;
+    text-align: start;
+    margin: 20px 40px 0px 40px;
+}
+.content p{
+    font-size: 30px;
+    color: white;
+}
+.tweet-btns{
+    margin: 0px 40px 0px 40px;
+    display: flex;
+    justify-content: space-around;
+}
+.tweet-btns a{
+    text-decoration: none;
+    color: white;
+    padding: 7px;
+    transition: color 0.2s ease-in-out;
+    margin-top: 20px;
+}
+.tweet-btns a:nth-child(1):hover{
+        color: rgb(255, 0, 98);
+}
+.tweet-btns a:nth-child(2):hover{
+        color: rgb(0, 255, 0);
+}
+.tweet-btns a:nth-child(3):hover{
+        color: rgb(47, 0, 255);
+}
+
+.trendings{
+    position: relative;
+    width: 80%;
+    height: 90%;
+    margin: auto;
+    margin-top: 10%;
+    background: rgba(128, 128, 128, 0.174);
+    border-radius: 20px;
+}
+.trendings ul{
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.trendings ul li{
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.trendings ul a{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    &:hover{
+        background: rgba(0, 0, 0, 0.347);
+    }
+}
