@@ -15,4 +15,7 @@ public interface UserService {
 
     @Transactional
     Users findByUsername(String username);
+
+    @Transactional
+    Users viewProfile(String username);
 }

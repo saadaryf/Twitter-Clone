@@ -3,7 +3,6 @@ package com.appclones.twitterClone.services.impl;
 import com.appclones.twitterClone.model.users.Users;
 import com.appclones.twitterClone.repositories.UserRepository;
 import com.appclones.twitterClone.services.UserService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +48,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users findByUsername(String username) {
+        Optional<Users> foundUser = userRepository.findByUsername(username);
+        return foundUser.orElse(null);
+    }
+
+    @Override
+    public Users viewProfile(String username) {
         Optional<Users> foundUser = userRepository.findByUsername(username);
         return foundUser.orElse(null);
     }

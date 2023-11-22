@@ -14,4 +14,10 @@ public interface TweetService {
 
     @Transactional
     public void updateLikes(Integer tweetId);
+
+    @Transactional
+    public  List<Tweets> getUserTweets(String username);
+
+    @Transactional
+    public  Tweets findTweetById(Integer id);
 }

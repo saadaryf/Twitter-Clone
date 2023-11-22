@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/profile.css">
     <title>Home</title>
 </head>
 <body>
+<!-- reply popup -->
+<div th:each="tweet : ${tweets}"  class="reply hidden">
+    <form th:action="@{/tweet/save-reply}" method="post">
+        <div class="create-tweet">
+            <input type="hidden" th:name="tweetId" th:value="${tweet.id}" />
+            <textarea id="tweet-content" name="content" placeholder="Write your Reply!"></textarea>
+            <div class="line"></div>
+            <button type="submit" id="reply-btn">POST</button>
+            <div class="line"></div>
+        </div>
+    </form>
+</div>
 <div class="main">
     <div class="left">
         <header>
@@ -16,7 +29,7 @@
                         <a href="#"><img src="img/x-img.jpg" alt=""></a>
                     </li>
                     <li>
-                        <a href="#">Home</a>
+                        <a id="home-btn" href="#home">Home</a>
                     </li>
                     <li>
                         <a href="#">Notifications</a>
@@ -25,7 +38,7 @@
                         <a href="#">Messages</a>
                     </li>
                     <li>
-                        <a href="#">Profile</a>
+                        <a id="profile-btn" href="#profile">Profile</a>
                     </li>
                     <li>
                         <form id="logoutForm" th:action="@{/logout}" method="post">
@@ -43,27 +56,71 @@
         </div>
     </div>
     <div class="middle">
-        <form th:action="@{/tweet/save}" method="post">
-            <div class="create-tweet">
-                <textarea id="tweet-content" name="content" placeholder="What is happening?!"></textarea>
-                <div class="line"></div>
-                <button type="submit" id="post-btn">POST</button>
-                <div class="line"></div>
+        <div class="tweets-div">
+            <form th:action="@{/tweet/save}" method="post">
+                <div class="create-tweet">
+                    <textarea id="tweet-content" name="content" placeholder="What is happening?!"></textarea>
+                    <div class="line"></div>
+                    <button type="submit" id="post-btn">POST</button>
+                    <div class="line"></div>
+                </div>
+            </form>
+            <div th:each="tweet : ${tweets}" class="new-tweet">
+                <h5 th:text="${tweet.name}">John Doe</h5>
+                <p th:text="${#dates.format(tweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
+                <div class="content">
+                    <p th:text="${tweet.content}" th:id="${'tweet-content-' + tweet.id}">This is a tweet</p>
+                </div>
+                <div class="tweet-btns">
+                    <!-- Your initial HTML -->
+                    <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
+                        <span th:text="${tweet.like_count}">0</span>-Likes
+                    </a>
+                    <a class="reply-button" href="#">Reply</a>
+                    <a href="#">Message</a>
+                </div>
             </div>
-        </form>
-        <div th:each="tweet : ${tweets}" class="new-tweet">
-            <h5 th:text="${tweet.name}">John Doe</h5>
-            <p th:text="${#dates.format(tweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
-            <div class="content">
-                <p th:text="${tweet.content}" th:id="${'tweet-content-' + tweet.id}">This is a tweet</p>
+        </div>
+        <div class="profile-div hidden">
+            <div class="cover-img">
+                <img src="img/cover-pic.jpg" alt="">
             </div>
-            <div class="tweet-btns">
-                <!-- Your initial HTML -->
-                <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}" th:fragment="likeFragment">
-                    <span th:text="${tweet.like_count}">0</span>-Likes
-                </a>
-                <a href="#">Reply</a>
-                <a href="#">Message</a>
+            <div class="name-area">
+                <div th:text="${user.name}" class="name">Fahad</div>
+                <a href="#">Edit Profile</a>
+            </div>
+            <div class="profile-buttons">
+                <button id="posts-button" href="">Posts</button>
+                <button id="replies-button" href="">Replies</button>
+            </div>
+            <div class="user-posts hidden">
+                <div th:each="userTweet : ${userTweets}" class="new-tweet">
+                    <h5 th:text="${userTweet.name}">John Doe</h5>
+                    <p th:text="${#dates.format(userTweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
+                    <div class="content">
+                        <p th:text="${userTweet.content}" th:id="${'tweet-content-' + userTweet.id}">Post Tweet</p>
+                    </div>
+                    <div class="tweet-btns">
+                        <a th:href="@{'/tweet/updateLikes?id=' + ${userTweet.id}}">
+                            <span th:text="${userTweet.like_count}">0</span>-Likes
+                        </a>
+                        <a href="#">Message</a>
+                    </div>
+                </div>
+            </div>
+            <div class="user-replies hidden">
+                <div th:each="tweet : ${tweets}" class="new-tweet">
+                    <h5 th:text="${tweet.name}">John Doe</h5>
+                    <p th:text="${#dates.format(tweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
+                    <div class="content">
+                        <p th:text="${tweet.content}" th:id="${'tweet-content-' + tweet.id}">Reply Tweet</p>
+                    </div>
+                    <div class="tweet-btns">
+                        <a class="reply-like" th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
+                            <span th:text="${tweet.like_count}">0</span>-Likes
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -99,6 +156,7 @@
     </div>
 </div>
 
+<script src="js/profile.js"></script>
 <script src="js/home.js"></script>
 </body>
 </html>

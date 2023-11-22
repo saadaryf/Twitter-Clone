@@ -23,7 +23,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "/signup")
     public ResponseEntity<String> SignUp(@ModelAttribute UserRequest userRequest){
         Users user= userMapper.mapToEntity(userRequest);

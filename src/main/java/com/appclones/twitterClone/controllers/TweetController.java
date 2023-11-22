@@ -1,9 +1,13 @@
 package com.appclones.twitterClone.controllers;
 
+import com.appclones.twitterClone.mappers.ReplyMapper;
 import com.appclones.twitterClone.mappers.TweetMapper;
+import com.appclones.twitterClone.model.Replies;
 import com.appclones.twitterClone.model.Tweets;
+import com.appclones.twitterClone.model.requests.ReplyRequest;
 import com.appclones.twitterClone.model.requests.TweetRequest;
 import com.appclones.twitterClone.model.users.Users;
+import com.appclones.twitterClone.services.ReplyService;
 import com.appclones.twitterClone.services.TweetService;
 import com.appclones.twitterClone.services.UserService;
 import org.slf4j.Logger;
@@ -29,6 +33,10 @@ public class TweetController {
     TweetMapper tweetMapper;
     @Autowired
     TweetService tweetService;
+    @Autowired
+    ReplyMapper replyMapper;
+    @Autowired
+    ReplyService replyService;
 
     @RequestMapping(method = {RequestMethod.POST}, value = "/save")
     public String saveTweet(@ModelAttribute TweetRequest tweetRequest) {
@@ -43,6 +51,23 @@ public class TweetController {
             return "redirect:/home";
         }
     }
+    @RequestMapping(method = {RequestMethod.POST}, value = "/save-reply")
+    public String saveReply(@RequestParam("tweetId") Integer tweetId, @RequestParam("content") String content){
+        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
+        String username= authentication.getName();
+        Users user = userService.findByUsername(username);
+
+        ReplyRequest replyRequest = new ReplyRequest();
+        replyRequest.setId(tweetId);
+        replyRequest.setContent(content);
+
+        Tweets tweet = tweetService.findTweetById(tweetId);
+
+        Replies reply = replyMapper.mapToEntity(replyRequest, user, tweet);
+        replyService.saveReply(reply);
+        return "redirect:/home";
+    }
+
     @RequestMapping(value = "/updateLikes", method = {RequestMethod.GET,RequestMethod.POST})
     public String updateLikes(@RequestParam("id") Integer tweetId) {
         tweetService.updateLikes(tweetId);

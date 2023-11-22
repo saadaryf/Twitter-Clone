@@ -1,0 +1,92 @@
+
+/* showing profile */
+
+.hidden{
+    display: none !important;
+}
+.profile-div{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+.cover-img {
+    position: relative;
+    min-height: 150px;
+    height: 30vh;
+    overflow: hidden;
+    text-align: center;
+    background: gray;
+}
+.cover-img img{
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+.name-area{
+    position: relative;
+    width: 100%;
+    min-height: 50px;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 40px;
+    box-sizing: border-box;
+}
+.name-area a{
+    text-decoration: none;
+    border: 3px solid #dddddd24;
+    border-radius: 30px;
+    padding: 10px 15px;
+    color: white;
+    &:hover{
+        border: 3px solid rgba(0, 0, 255, 0.516);
+        background: rgba(36, 36, 36, 0.5);
+    }
+}
+.profile-buttons{
+    position: relative;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.profile-buttons button{
+    position: relative;
+    cursor: pointer;
+    padding: 20px 0px;
+    width: 50%;
+    background: inherit;
+    color: white;
+    font-size: 20px;
+    outline: none;
+    border: 0;
+    border-bottom: 1px solid #dddddd3a;
+    &:hover{
+        background: #1a1a1a;
+    }
+    &:focus{
+        border-bottom: 1px solid blue;
+    }
+}
+.user-posts{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 130px;
+}
+.user-replies{
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: 130px;
+}
+.reply-like{
+    position: absolute;
+    right: 20px;
+    top: 70px;
+}

@@ -1,7 +1,9 @@
 package com.appclones.twitterClone.services.impl;
 
 import com.appclones.twitterClone.model.Tweets;
+import com.appclones.twitterClone.model.users.Users;
 import com.appclones.twitterClone.repositories.TweetsRepository;
+import com.appclones.twitterClone.repositories.UserRepository;
 import com.appclones.twitterClone.services.TweetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +19,9 @@ public class TweetServiceImpl implements TweetService {
 
     @Autowired
     TweetsRepository tweetsRepository;
+
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public boolean saveTweet(Tweets tweet) {
@@ -46,5 +51,21 @@ public class TweetServiceImpl implements TweetService {
         }else{
             logger.warn("No Tweet found to Delete with Id: {}", tweetId);
         }
+    }
+    @Override
+    public List<Tweets> getUserTweets(String username) {
+        Optional<Users> foundUser = userRepository.findByUsername(username);
+        if(foundUser.isPresent()){
+            Users user = foundUser.get();
+            return tweetsRepository.findAllTweetsByUserId(user.getId());
+        }else {
+            return null;
+        }
+    }
+
+    @Override
+    public Tweets findTweetById(Integer id) {
+        Optional<Tweets> foundTweet = tweetsRepository.findById(id);
+        return foundTweet.orElse(null);
     }
 }
