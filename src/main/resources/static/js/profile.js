@@ -3,7 +3,9 @@ const postsBtn = document.getElementById('posts-button');
 const repliesBtn = document.getElementById('replies-button');
 const homeBtn = document.getElementById('home-btn');
 const profileBtn = document.getElementById('profile-btn');
+/*
 const replyToTweetBtns = document.querySelectorAll('.reply-button');
+*/
 
 const postsDiv = document.querySelector('.user-posts');
 const repliesDiv = document.querySelector('.user-replies');
@@ -35,7 +37,7 @@ profileBtn.addEventListener('click', function () {
     }
     profileDiv.classList.remove('hidden');
 })
-replyToTweetBtns.forEach((replyBtn) => {
+/*replyToTweetBtns.forEach((replyBtn) => {
     replyBtn.addEventListener('click', function (event) {
             event.preventDefault();
 
@@ -45,7 +47,7 @@ replyToTweetBtns.forEach((replyBtn) => {
             event.stopPropagation();
         }
     });
-})
+})*/
 document.body.addEventListener('click', function (event) {
     if (!replyDiv.contains(event.target)) {
         replyDiv.classList.add('hidden');
