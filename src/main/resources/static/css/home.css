@@ -176,6 +176,9 @@ header button{
         color: rgb(0, 255, 0);
 }
 .tweet-btns a:nth-child(3):hover{
+        color: rgb(0, 255, 0);
+}
+.tweet-btns a:nth-child(4):hover{
         color: rgb(47, 0, 255);
 }
 
@@ -217,13 +220,14 @@ header button{
 /*reply popup*/
 .reply{
     position: fixed;
-    width: 80vh;
+    width: 80vw;
     height: 40vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     overflow-y: auto;
     z-index: 999;
+    background: rgba(0, 0, 0, 0.646);
     backdrop-filter: blur(25px);
     border-radius: 13px;
     border: 2px solid gray;

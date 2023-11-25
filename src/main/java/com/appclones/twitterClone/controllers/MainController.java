@@ -41,6 +41,10 @@ public class MainController {
     TweetMapper tweetMapper;
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    ReplyService replyService;
+    @Autowired
+    ReplyMapper replyMapper;
 
     /*this function is to read tweets from tweets table and show on home page*/
     @GetMapping({"/", "/home"})
@@ -67,9 +71,15 @@ public class MainController {
 
         UserResponse userResponse = userMapper.mapToDTO(user);
 
+        List<Replies> repliesList = replyService.getYourOwnReplies(username);
+        List<ReplyResponse> repliesResposes = repliesList.stream()
+                .map(reply -> replyMapper.mapToDTO(reply) )
+                .toList();
+
         model.addAttribute("tweets", tweetResponses);
         model.addAttribute("userTweets", userTweetsResponse);
         model.addAttribute("user", userResponse);
+        model.addAttribute("userReplies", repliesResposes);
 
         return "home";
     }

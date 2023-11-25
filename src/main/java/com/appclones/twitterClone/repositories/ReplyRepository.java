@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ReplyRepository extends JpaRepository<Replies,Integer> {
         List<Replies> findRepliesByTweetId(Integer tweetId);
+        List<Replies> findRepliesByUserId(Integer tweetId);
 }

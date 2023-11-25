@@ -49,8 +49,8 @@
         </header>
         <div class="profile">
             <div class="name">
-                <b>Saad Dhillon</b>
-                <p>SaadDhillon7</p>
+                <b th:text="${user.name}">Name</b>
+                <p th:text="${user.username}"> Username</p>
             </div>
         </div>
     </div>
@@ -104,21 +104,14 @@
                         <a th:href="@{'/tweet/updateLikes?id=' + ${userTweet.id}}">
                             <span th:text="${userTweet.like_count}">0</span>-Likes
                         </a>
-                        <a href="#">Message</a>
                     </div>
                 </div>
             </div>
             <div class="user-replies hidden">
-                <div th:each="tweet : ${tweets}" class="new-tweet">
-                    <h5 th:text="${tweet.name}">John Doe</h5>
-                    <p th:text="${#dates.format(tweet.time, 'yyyy-MM-dd HH:mm')}">Time</p>
+                <div th:each="userReply : ${userReplies}" class="new-tweet">
+                    <h5 th:text="${userReply.name}">John Doe</h5>
                     <div class="content">
-                        <p th:text="${tweet.content}" th:id="${'tweet-content-' + tweet.id}">Reply Tweet</p>
-                    </div>
-                    <div class="tweet-btns">
-                        <a class="reply-like" th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
-                            <span th:text="${tweet.like_count}">0</span>-Likes
-                        </a>
+                        <p th:text="${userReply.content}">Reply Tweet</p>
                     </div>
                 </div>
             </div>

@@ -11,4 +11,7 @@ public interface ReplyService {
 
     @Transactional
     public List<Replies> getRepliesOfTweet(Integer tweetId);
+
+    @Transactional
+    public List<Replies> getYourOwnReplies(String username);
 }
