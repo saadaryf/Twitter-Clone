@@ -9,10 +9,9 @@
 </head>
 <body>
 <!-- reply popup -->
-<div th:each="tweet : ${tweets}"  class="reply hidden">
-    <form th:action="@{/tweet/save-reply}" method="post">
+<div th:each="tweet : ${tweets}" class="reply hidden">
+    <form th:action="@{'/tweet/save-reply?tweetId=' + ${tweet.id}}" method="post">
         <div class="create-tweet">
-            <input type="hidden" th:name="tweetId" th:value="${tweet.id}" />
             <textarea id="tweet-content" name="content" placeholder="Write your Reply!"></textarea>
             <div class="line"></div>
             <button type="submit" id="reply-btn">POST</button>
@@ -76,7 +75,8 @@
                     <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
                         <span th:text="${tweet.like_count}">0</span>-Likes
                     </a>
-                    <a class="reply-button" href="#">Reply</a>
+                    <a class="reply-button" th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">Post Reply</a>
+                    <a  th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">View Replies</a>
                     <a href="#">Message</a>
                 </div>
             </div>

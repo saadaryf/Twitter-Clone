@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Replies</title>
+    <link rel="stylesheet" th:href="@{/css/reply.css}">
+</head>
+<body>
+<div class="previous-replies">
+    <h1>Previous Replies</h1>
+    <div th:each="tweetReply : ${tweetReplies}" class="reply-tweet">
+        <h5 th:text="${tweetReply.name}">John Doe</h5>
+        <div class="content">
+            <p th:text="${tweetReply.content}">This is a tweet</p>
+        </div>
+    </div>
+    <a href= "/home">Close</a>
+</div>
+</body>
+</html>

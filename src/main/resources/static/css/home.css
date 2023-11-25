@@ -160,6 +160,7 @@ header button{
     margin: 0px 40px 0px 40px;
     display: flex;
     justify-content: space-around;
+    font-size: 0.8em;
 }
 .tweet-btns a{
     text-decoration: none;
@@ -213,11 +214,11 @@ header button{
     }
 }
 
-/* reply popup css*/
+/*reply popup*/
 .reply{
-    position: absolute;
+    position: fixed;
     width: 80vh;
-    height: 80vh;
+    height: 40vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -227,3 +228,5 @@ header button{
     border-radius: 13px;
     border: 2px solid gray;
 }
+
+

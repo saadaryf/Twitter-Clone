@@ -6,6 +6,8 @@ import com.appclones.twitterClone.services.ReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReplyServiceImpl implements ReplyService {
     @Autowired
@@ -13,5 +15,10 @@ public class ReplyServiceImpl implements ReplyService {
     @Override
     public void saveReply(Replies reply) {
         replyRepository.save(reply);
+    }
+
+    @Override
+    public List<Replies> getRepliesOfTweet(Integer tweetId) {
+        return replyRepository.findRepliesByTweetId(tweetId);
     }
 }

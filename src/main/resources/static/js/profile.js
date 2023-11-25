@@ -37,6 +37,8 @@ profileBtn.addEventListener('click', function () {
 })
 replyToTweetBtns.forEach((replyBtn) => {
     replyBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+
         if (replyDiv.classList.contains('hidden')) {
             replyDiv.classList.remove('hidden');
             // Stop the click event from reaching the body listener

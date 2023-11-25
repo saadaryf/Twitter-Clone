@@ -6,6 +6,7 @@ import com.appclones.twitterClone.model.Replies;
 import com.appclones.twitterClone.model.Tweets;
 import com.appclones.twitterClone.model.requests.ReplyRequest;
 import com.appclones.twitterClone.model.requests.TweetRequest;
+import com.appclones.twitterClone.model.responses.ReplyResponse;
 import com.appclones.twitterClone.model.users.Users;
 import com.appclones.twitterClone.services.ReplyService;
 import com.appclones.twitterClone.services.TweetService;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/tweet")
@@ -51,7 +53,7 @@ public class TweetController {
             return "redirect:/home";
         }
     }
-    @RequestMapping(method = {RequestMethod.POST}, value = "/save-reply")
+    @RequestMapping(method = {RequestMethod.POST ,RequestMethod.GET}, value = "/save-reply")
     public String saveReply(@RequestParam("tweetId") Integer tweetId, @RequestParam("content") String content){
         Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
         String username= authentication.getName();
@@ -67,12 +69,18 @@ public class TweetController {
         replyService.saveReply(reply);
         return "redirect:/home";
     }
-
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/get-replies")
+    public String getReplies(@RequestParam("id") Integer tweetId, Model model){
+        List<Replies> repliesList = replyService.getRepliesOfTweet(tweetId);
+        List<ReplyResponse> replyResponses= repliesList.stream()
+                .map(reply -> replyMapper.mapToDTO(reply))
+                .toList();
+        model.addAttribute("tweetReplies" ,replyResponses);
+        return "replies";
+    }
     @RequestMapping(value = "/updateLikes", method = {RequestMethod.GET,RequestMethod.POST})
     public String updateLikes(@RequestParam("id") Integer tweetId) {
         tweetService.updateLikes(tweetId);
         return "redirect:/home";
     }
-
-
 }

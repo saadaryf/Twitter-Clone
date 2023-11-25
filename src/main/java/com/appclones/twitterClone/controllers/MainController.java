@@ -1,11 +1,15 @@
 package com.appclones.twitterClone.controllers;
 
+import com.appclones.twitterClone.mappers.ReplyMapper;
 import com.appclones.twitterClone.mappers.TweetMapper;
 import com.appclones.twitterClone.mappers.UserMapper;
+import com.appclones.twitterClone.model.Replies;
 import com.appclones.twitterClone.model.Tweets;
+import com.appclones.twitterClone.model.responses.ReplyResponse;
 import com.appclones.twitterClone.model.responses.TweetResponse;
 import com.appclones.twitterClone.model.responses.UserResponse;
 import com.appclones.twitterClone.model.users.Users;
+import com.appclones.twitterClone.services.ReplyService;
 import com.appclones.twitterClone.services.TweetService;
 import com.appclones.twitterClone.services.UserService;
 import org.slf4j.Logger;
@@ -17,6 +21,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Comparator;
 import java.util.List;
@@ -66,4 +73,5 @@ public class MainController {
 
         return "home";
     }
+
 }
