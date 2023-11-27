@@ -23,6 +23,7 @@ public class UserMapper {
         userResponse.setName(user.getName());
         userResponse.setUsername(user.getUsername());
         userResponse.setEmail(user.getEmail());
+        userResponse.setId(user.getId());
         return userResponse;
     }
 

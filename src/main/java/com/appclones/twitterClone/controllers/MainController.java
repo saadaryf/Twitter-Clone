@@ -48,9 +48,9 @@ public class MainController {
 
     /*this function is to read tweets from tweets table and show on home page*/
     @GetMapping({"/", "/home"})
-    public String getTweets( Model model) {
-        Authentication authentication= SecurityContextHolder.getContext().getAuthentication();
-        String username= authentication.getName();
+    public String getTweets(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
         Users user = userService.findByUsername(username);
 
         List<Tweets> tweets = tweetService.getAllTweets();
@@ -73,13 +73,21 @@ public class MainController {
 
         List<Replies> repliesList = replyService.getYourOwnReplies(username);
         List<ReplyResponse> repliesResposes = repliesList.stream()
-                .map(reply -> replyMapper.mapToDTO(reply) )
+                .map(reply -> replyMapper.mapToDTO(reply))
+                .toList();
+
+        List<Users> allUsers = userService.getAllUsers();
+        List<Users> sortedUserByName = allUsers.stream()
+                .sorted(Comparator.comparing(Users::getName)).toList();
+        List<UserResponse> allUsersResponses = sortedUserByName.stream()
+                .map(user1 -> userMapper.mapToDTO(user1))
                 .toList();
 
         model.addAttribute("tweets", tweetResponses);
         model.addAttribute("userTweets", userTweetsResponse);
         model.addAttribute("user", userResponse);
         model.addAttribute("userReplies", repliesResposes);
+        model.addAttribute("allUsers", allUsersResponses);
 
         return "home";
     }

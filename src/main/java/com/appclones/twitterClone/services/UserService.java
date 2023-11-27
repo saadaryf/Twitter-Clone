@@ -4,6 +4,7 @@ package com.appclones.twitterClone.services;
 import com.appclones.twitterClone.model.users.Users;
 import jakarta.transaction.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 public interface UserService {
@@ -18,4 +19,7 @@ public interface UserService {
 
     @Transactional
     Users viewProfile(String username);
+
+    @Transactional
+    List<Users> getAllUsers();
 }

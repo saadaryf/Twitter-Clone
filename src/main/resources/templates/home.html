@@ -24,7 +24,7 @@
                         <a href="#">Notifications</a>
                     </li>
                     <li>
-                        <a href="#">Messages</a>
+                        <a id="message-button" href="#message">Messages</a>
                     </li>
                     <li>
                         <a id="profile-btn" href="#profile">Profile</a>
@@ -72,13 +72,9 @@
                     <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
                         <span th:text="${tweet.like_count}">0</span>-Likes
                     </a>
-                    <a  th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">View Replies</a>
+                    <a th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">View Replies</a>
                     <a href="#">Message</a>
                 </div>
-                <!-- reply popup -->
-              <!--  <div class="reply ">
-
-                </div>-->
             </div>
         </div>
         <div class="profile-div hidden">
@@ -114,6 +110,13 @@
                         <p th:text="${userReply.content}">Reply Tweet</p>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="users-tab hidden">
+            <h1>Select User you want to send Message to.</h1>
+            <div id="user-bar" th:each="user : ${allUsers}">
+                <p th:text="${user.name}">Name</p>
+                <a th:href="@{'/this/this?id=' + ${user.id}}">Chat..</a>
             </div>
         </div>
     </div>

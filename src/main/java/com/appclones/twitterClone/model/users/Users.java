@@ -54,10 +54,6 @@ public class Users {
     @OneToMany(mappedBy = "user")
     private List<Notifications> notifications;
 
-    /*user and searchHistory, one to many*/
-    @OneToMany(mappedBy = "user")
-    private List<SearchHistory> searchHistories;
-
     /*creating roles table*/
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
