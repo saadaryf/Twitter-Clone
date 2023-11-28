@@ -18,6 +18,9 @@ public interface UserService {
     Users findByUsername(String username);
 
     @Transactional
+    Users findById(Integer id);
+
+    @Transactional
     Users viewProfile(String username);
 
     @Transactional

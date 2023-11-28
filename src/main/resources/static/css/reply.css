@@ -25,20 +25,23 @@ body {
     border: 2px solid gray;
     overflow: auto;
     padding: 50px;
-    background: black;
+    background: rgba(0, 0, 0, 0.646);
 }
-.previous-replies a{
-    position: fixed;
-    right: 25px;
+#close-btn{
+    position:sticky;
     top: 15px;
+    margin-left: 93%;
     text-transform: uppercase;
     font-size: 1.1em;
     text-decoration: none;
-    color: red;
+    color: white;
     font-weight: 900;
+    border-radius: 5px;
+    background: rgb(86, 9, 9);
+    padding: 5px;
+    z-index: 5;
     &:hover{
-        text-decoration: underline;
-        color: rgba(255, 255, 255, 0.861);
+        background: red;
     }
 }
 .reply-tweet{
@@ -52,4 +55,96 @@ body {
     margin-left: 20px;
     margin-top: 20px;
     font-size: 1.4em;
+}
+
+/* chat-box css */
+
+main{
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -60%);
+    width: 85%;
+    height: 70%;
+    overflow: auto;
+    background: #111;
+    border-radius: 10px;
+}
+.chat-box .content{
+    margin-top: 100px !important;
+}
+.message{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    padding: 10px 0px;
+    border-bottom: 1px solid #aaaaaa6b;
+    overflow: auto;
+}
+.message p{
+    color: gray;
+    font-size: 0.6em;
+    margin-top: 10px;
+}
+.message h6{
+    margin-top: 10px;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+.sent-message{
+    position: relative;
+    margin-left: auto;
+    margin-right: 20px;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+.sent-message p{
+    position: relative;
+    width: fit-content;
+}
+.sent-message img{
+    position: relative;
+}
+.received-message{
+    position: relative;
+    width: 45%;
+}
+.user-input{
+    position: absolute;
+    width: 85%;
+    top: 79%;
+    left: 7.5%;
+    box-sizing: border-box;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.user-input input{
+    padding: 20px;
+    font-size: 1.1em;
+    width: 100%;
+    outline: none;
+    border: 0;
+    background: #ccc;
+}
+.user-input button{
+    cursor: pointer;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 19px;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    background: rgba(0, 0, 255, 0.301);
+    &:hover{
+        background: blue;
+    }
 }

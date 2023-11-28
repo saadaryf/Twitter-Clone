@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" th:href="@{/css/reply.css}">
+</head>
+<body>
+<main>
+    <a id="close-btn" href="/home">Close</a>
+    <div class="chat-box">
+        <div class="content">
+            <div th:each="message : ${messages}"
+                 th:class="${message.sender.id == user.id} ? 'message sent-message' : 'message received-message'">
+                <h6 th:text="${message.sender.id == user.id ? message.sender.name : receiverName}"></h6>
+                <p th:text="${#dates.format(message.message_time, 'HH:mm dd MM yyyy')}"></p>
+                <h6 th:text="${message.message_content}"></h6>
+            </div>
+        </div>
+    </div>
+</main>
+<form class="user-input" action="/message/save" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="hidden" name="receiverId" th:value="${receiverId}">
+    <input name="message_content" type="text" placeholder="Your message here..">
+    <button type="submit">Send</button>
+</form>
+
+<script src="/js/messages.js"></script>
+</body>
+</html>

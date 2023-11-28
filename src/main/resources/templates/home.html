@@ -116,7 +116,7 @@
             <h1>Select User you want to send Message to.</h1>
             <div id="user-bar" th:each="user : ${allUsers}">
                 <p th:text="${user.name}">Name</p>
-                <a th:href="@{'/this/this?id=' + ${user.id}}">Chat..</a>
+                <a th:href="@{'/message/view-all?id=' + ${user.id}}">Chat..</a>
             </div>
         </div>
     </div>
