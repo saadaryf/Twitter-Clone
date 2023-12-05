@@ -21,6 +21,7 @@ public class ReplyMapper {
         ReplyResponse dto = new ReplyResponse();
         dto.setName(reply.getUser().getName());
         dto.setContent(reply.getReply_content());
+        dto.setId(reply.getId());
         return dto;
     }
 }

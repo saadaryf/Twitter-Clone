@@ -39,7 +39,7 @@ public class Users {
     private List<Tweets> tweets;
 
     /*user and replies, one to many*/
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Replies> replies;
 
     /*student and sent-messages, one to many*/
@@ -49,10 +49,6 @@ public class Users {
     /*student and received-messages, one to many*/
     @OneToMany(mappedBy = "receiver")
     private List<Messages> receivedMessages;
-
-    /*user and notifications, one to many*/
-    @OneToMany(mappedBy = "user")
-    private List<Notifications> notifications;
 
     /*creating roles table*/
     @ElementCollection(fetch = FetchType.EAGER)

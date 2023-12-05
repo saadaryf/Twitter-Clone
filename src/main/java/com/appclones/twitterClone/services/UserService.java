@@ -25,4 +25,7 @@ public interface UserService {
 
     @Transactional
     List<Users> getAllUsers();
+
+    @Transactional
+    public void updateUser(Users userToUpdate, Users usersNewData);
 }

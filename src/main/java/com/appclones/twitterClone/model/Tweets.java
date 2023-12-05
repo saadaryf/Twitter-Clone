@@ -33,7 +33,7 @@ public class Tweets {
     private Users user;
 
     /*tweet and replies, one to many*/
-    @OneToMany(mappedBy = "tweet")
+    @OneToMany(mappedBy = "tweet", cascade = CascadeType.REMOVE)
     private List<Replies> replies;
 
 

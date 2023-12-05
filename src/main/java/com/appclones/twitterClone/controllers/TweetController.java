@@ -83,4 +83,17 @@ public class TweetController {
         tweetService.updateLikes(tweetId);
         return "redirect:/home";
     }
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/delete")
+    public String deleteTweet(@RequestParam("id") Integer tweetId){
+        tweetService.deleteTweet(tweetId);
+        return "redirect:/home";
+    }
+
+    @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/delete-reply")
+    public String deleteReply(@RequestParam("id") Integer replyId){
+        replyService.deleteReply(replyId);
+        return "redirect:/home";
+    }
+
+
 }

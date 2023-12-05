@@ -20,15 +20,10 @@ body {
     display: flex;
     justify-content: right;
 }
-.right{
-    position: fixed;
-    right: 0px;
-    overflow: hidden;
-}
 .middle{
-    width: 47.5vw;
+    width: 60%;
+    margin-right: 10%;
     height: 100vh;
-    margin: auto;
 }
 .create-tweet{
     height: 230px;
@@ -128,6 +123,7 @@ header button{
     cursor: pointer;
 }
 .left {
+    width: 30%;
     position: fixed;
     left: 0px;
     overflow: hidden;
@@ -141,7 +137,7 @@ header button{
     justify-content: space-around;
     align-items: center;
 }
-.left,.right{
+.left{
     width: 25vw;
     height: 100vh;
 }
@@ -263,3 +259,53 @@ header button{
     }
 }
 
+
+.edit-profile{
+    position: fixed;
+    border: 1px solid #aaa;
+    display: none;
+    flex-direction: column;
+    z-index: 20;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vh;
+    height: 60vh;
+    border-radius: 13px;
+    padding: 50px;
+    background: black;
+
+}
+.edit-profile form{
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+.edit-profile input{
+    outline: none;
+    border: 0;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    width: 100%
+    box-sizing: border-box;
+}
+.edit-profile input:last-child{
+    cursor: pointer;
+    background: green;
+    &:hover{
+        background: greenyellow;
+    }
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(70, 68, 68, 0.5);
+    z-index: 5;
+}

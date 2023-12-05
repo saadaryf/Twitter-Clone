@@ -14,4 +14,7 @@ public interface ReplyService {
 
     @Transactional
     public List<Replies> getYourOwnReplies(String username);
+
+    @Transactional
+    public void deleteReply(Integer id);
 }

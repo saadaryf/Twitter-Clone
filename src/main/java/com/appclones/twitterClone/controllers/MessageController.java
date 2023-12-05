@@ -45,9 +45,9 @@ public class MessageController {
         Users receiver = userService.findById(messageRequest.getReceiverId());
         Messages message = messageMapper.mapToEntity(messageRequest, user,receiver);
         messageService.saveMessage(message);
-        return "redirect:/message/view-all?id=" + messageRequest.getReceiverId();
+        return "redirect:/message/send?id=" + messageRequest.getReceiverId();
     }
-    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "view-all")
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "send")
     public String getAllMessage(@RequestParam("id") Integer id,Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();

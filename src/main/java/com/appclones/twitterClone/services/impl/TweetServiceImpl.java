@@ -68,4 +68,9 @@ public class TweetServiceImpl implements TweetService {
         Optional<Tweets> foundTweet = tweetsRepository.findById(id);
         return foundTweet.orElse(null);
     }
+
+    @Override
+    public void deleteTweet(Integer id) {
+        tweetsRepository.deleteById(id);
+    }
 }

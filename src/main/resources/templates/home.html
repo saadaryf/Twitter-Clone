@@ -8,7 +8,16 @@
     <title>Home</title>
 </head>
 <body>
-
+<div class="overlay"></div>
+<div class="edit-profile">
+    <form action="/user/update" method="post" autocomplete="off">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+        <input type="text" name="name" id="name" placeholder="name">
+        <input type="text" name="username" id="username" placeholder="username">
+        <input type="text" name="email" id="email" placeholder="email">
+        <input class="btn" id="create-acc" type="submit" value="Update Account">
+    </form>
+</div>
 <div class="main">
     <div class="left">
         <header>
@@ -19,9 +28,6 @@
                     </li>
                     <li>
                         <a id="home-btn" href="#home">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Notifications</a>
                     </li>
                     <li>
                         <a id="message-button" href="#message">Messages</a>
@@ -68,12 +74,10 @@
                     </div>
                 </form>
                 <div class="tweet-btns">
-                    <!-- Your initial HTML -->
                     <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
                         <span th:text="${tweet.like_count}">0</span>-Likes
                     </a>
                     <a th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">View Replies</a>
-                    <a href="#">Message</a>
                 </div>
             </div>
         </div>
@@ -83,7 +87,7 @@
             </div>
             <div class="name-area">
                 <div th:text="${user.name}" class="name">Fahad</div>
-                <a href="#">Edit Profile</a>
+                <a id="edit-profile-button" href="#">Edit Profile</a>
             </div>
             <div class="profile-buttons">
                 <button id="posts-button" href="">Posts</button>
@@ -97,9 +101,10 @@
                         <p th:text="${userTweet.content}" th:id="${'tweet-content-' + userTweet.id}">Post Tweet</p>
                     </div>
                     <div class="tweet-btns">
-                        <a th:href="@{'/tweet/updateLikes?id=' + ${userTweet.id}}">
+                        <a>
                             <span th:text="${userTweet.like_count}">0</span>-Likes
                         </a>
+                        <a th:href="@{'/tweet/delete?id=' + ${userTweet.id}}" onclick="DeleteAlert();">Delete Tweet</a>
                     </div>
                 </div>
             </div>
@@ -109,6 +114,10 @@
                     <div class="content">
                         <p th:text="${userReply.content}">Reply Tweet</p>
                     </div>
+                    <div class="tweet-btns">
+                        <a th:href="@{'/tweet/delete-reply?id=' + ${userReply.id}}" onclick="DeleteAlert();">Delete
+                            Reply</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,38 +125,8 @@
             <h1>Select User you want to send Message to.</h1>
             <div id="user-bar" th:each="user : ${allUsers}">
                 <p th:text="${user.name}">Name</p>
-                <a th:href="@{'/message/view-all?id=' + ${user.id}}">Chat..</a>
+                <a th:href="@{'/message/send?id=' + ${user.id}}">Chat..</a>
             </div>
-        </div>
-    </div>
-    <div class="right">
-        <div class="trendings">
-            <ul>
-                <li>
-                    <a href="#">#trending1</a>
-                </li>
-                <li>
-                    <a href="#">#trending2</a>
-                </li>
-                <li>
-                    <a href="#">#trending3</a>
-                </li>
-                <li>
-                    <a href="#">#trending4</a>
-                </li>
-                <li>
-                    <a href="#">#trending5</a>
-                </li>
-                <li>
-                    <a href="#">#trending5</a>
-                </li>
-                <li>
-                    <a href="#">#trending5</a>
-                </li>
-                <li>
-                    <a href="#">#trending5</a>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

@@ -38,4 +38,9 @@ public class ReplyServiceImpl implements ReplyService {
             return null;
         }
     }
+
+    @Override
+    public void deleteReply(Integer id) {
+        replyRepository.deleteById(id);
+    }
 }

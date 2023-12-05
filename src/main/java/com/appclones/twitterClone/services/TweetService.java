@@ -20,4 +20,7 @@ public interface TweetService {
 
     @Transactional
     public  Tweets findTweetById(Integer id);
+
+    @Transactional
+    public void deleteTweet(Integer id);
 }
