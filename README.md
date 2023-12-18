@@ -18,5 +18,5 @@
    - Participate in chat conversations with other users for direct communication.
 
 ## Screenshots
-![ login-page: Login Page ](login-page.png)
-![ home-page: Home Page ](home-page.png)
+![ login-page: Login Page ](screenshots/login-page.png)
+![ home-page: Home Page ](screenshots/home-page.png)
