@@ -78,10 +78,10 @@ public class TweetController {
         model.addAttribute("tweetReplies" ,replyResponses);
         return "replies";
     }
-    @RequestMapping(value = "/updateLikes", method = {RequestMethod.GET,RequestMethod.POST})
+    @GetMapping("/updateLikes")
     public String updateLikes(@RequestParam("id") Integer tweetId) {
         tweetService.updateLikes(tweetId);
-        return "redirect:/home";
+        return "redirect:/";
     }
     @RequestMapping(method = {RequestMethod.GET,RequestMethod.POST}, value = "/delete")
     public String deleteTweet(@RequestParam("id") Integer tweetId){

@@ -74,7 +74,7 @@
                     </div>
                 </form>
                 <div class="tweet-btns">
-                    <a th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
+                    <a id="update-like-button" th:href="@{'/tweet/updateLikes?id=' + ${tweet.id}}">
                         <span th:text="${tweet.like_count}">0</span>-Likes
                     </a>
                     <a th:href="@{'/tweet/get-replies?id=' + ${tweet.id}}">View Replies</a>
@@ -131,6 +131,7 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> 
 <script src="js/profile.js"></script>
 <script src="js/home.js"></script>
 </body>

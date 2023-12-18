@@ -14,6 +14,7 @@ body {
     color: white;
     display: flex;
     font-family: 'Roboto', sans-serif;
+    height: 100svh;
 }
 
 .left {
@@ -209,8 +210,8 @@ input {
         margin-top: 2%;
     }
     .login{
-        width: 40vh;
-        height: 40vh;
+        width: 50vh;
+        height: 50vh;
     }
 
 }

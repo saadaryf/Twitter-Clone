@@ -15,6 +15,8 @@ body {
     font-family: 'Roboto', sans-serif;
     overflow-y: auto;
     overflow-x: hidden;
+    font-size: 15px;
+    height: 100svh;
 }
 .main{
     display: flex;
@@ -41,7 +43,7 @@ body {
 }
 .create-tweet textarea {
     padding: 20px;
-    font-size: 20px;
+    font-size: 1.2em;
     background: rgb(15, 15, 15);
     border: 0;
     outline: none;
@@ -94,7 +96,7 @@ header img{
 }
 header ul{
     list-style: none;
-    font-size: 25px;
+    font-size: 2em;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -123,23 +125,20 @@ header button{
     cursor: pointer;
 }
 .left {
-    width: 30%;
+    width: 22%;
     position: fixed;
     left: 0px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 100vh;
 }
 .profile{
     height: 7vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-.left{
-    width: 25vw;
-    height: 100vh;
 }
 .new-tweet{
     width: 100%;
@@ -152,7 +151,7 @@ header button{
     border-right: 1px solid gray;
 }
 .new-tweet p{
-    font-size: 12px;
+    font-size: 1.1em;
     color: gray;
 }
 .new-tweet .content{
@@ -161,7 +160,7 @@ header button{
     margin: 20px 40px 0px 40px;
 }
 .content p{
-    font-size: 30px;
+    font-size: 3em;
     color: white;
 }
 .tweet-btns{
@@ -308,4 +307,25 @@ header button{
     height: 100%;
     background: rgba(70, 68, 68, 0.5);
     z-index: 5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    body {
+        font-size: 8px;
+        flex-direction: column;
+    }
+    header ul{
+        margin-left: 2%;
+    }
+    .middle{
+        margin-right: 0;
+    }
+    #reply-btn{
+        font-size: 0.7em;
+    }
+    .edit-profile{
+        width: 50vh;
+        height: 50vh;
+    }
 }
